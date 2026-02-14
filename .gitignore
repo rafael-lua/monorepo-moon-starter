@@ -47,6 +47,7 @@ coverage
 .settings/
 *.sublime-workspace
 .vscode/*
+!.vscode/extensions.json
 
 # OS generated files
 .DS_Store

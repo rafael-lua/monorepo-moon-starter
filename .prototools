@@ -1,8 +1,8 @@
-moon = "1.41.6"
+moon = "2.0.0-rc.3"
 node = "~22"
 npm = "bundled"
 yarn = "~4"
+proto = "0.55.2"
 
 [settings]
 auto-install = true
-auto-clean = true
