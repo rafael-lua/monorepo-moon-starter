@@ -1,5 +1,11 @@
 Changelogs are auto generated from commits using `harmonic-major` action.
 
+## [v0.3.1](https://github.com/rafael-lua/monorepo-moon-starter/compare/v0.3.0...v0.3.1) (2026.2.14)
+
+### 🧹 Chores
+
+-   chore: lint rules update
+
 ## [v0.3.0](https://github.com/rafael-lua/monorepo-moon-starter/compare/v0.2.0...v0.3.0) (2026.2.14)
 
 ### ✨ Features
