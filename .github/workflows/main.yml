@@ -27,5 +27,5 @@ jobs:
       - name: 📦 Setup toolchain
         uses: ./.github/actions/setup-toolchain
 
-      - name: Check all
-        run: moon check --all
+      - name: Run CI checks
+        run: moon ci :format :lint :testci :typecheck
