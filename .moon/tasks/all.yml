@@ -1,0 +1,99 @@
+$schema: https://moonrepo.dev/schemas/tasks.json
+
+# For typechecking to run correctly, build must run first to generate
+# any necessary type declaration files.
+implicitDeps:
+  - ^:build
+
+implicitInputs:
+  - package.json
+
+fileGroups:
+  sources:
+    - "src/**/*"
+  tests:
+    - "**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts}"
+  typescript:
+    - "tsconfig.json"
+    - "tsconfig.*.json"
+    - "/tsconfig.json"
+    - "/tsconfig.*.json"
+
+tasks:
+  format:
+    command: oxfmt
+    args:
+      - --config
+      - "@in(0)"
+      - --check
+      - .
+    inputs:
+      - /.oxfmtrc.json
+      - "@globs(sources)"
+      - "@globs(tests)"
+      - "**/*.{md,mdx,yml,yaml,json}"
+
+  formatfix:
+    inputs:
+      - /.oxfmtrc.json
+    command: oxfmt
+    args:
+      - --config
+      - "@in(0)"
+      - --write
+      - .
+    preset: server # does not run on ci
+
+  lint:
+    command: oxlint
+    args:
+      - .
+    inputs:
+      - "@globs(typescript)"
+      - "@globs(sources)"
+      - "@globs(tests)"
+      - /.oxlintrc.json
+
+  lintfix:
+    inputs:
+      - /.oxlintrc.json
+    command: oxlint
+    args:
+      - --fix
+      - .
+    preset: server # does not run on ci
+
+  testci:
+    command: vitest
+    args:
+      - run
+      - --passWithNoTests
+      - --coverage
+      - .
+    inputs:
+      - "@globs(sources)"
+      - "@globs(tests)"
+      - vitest.config.ts # Local for each project
+
+  test:
+    inputs:
+      - "@globs(sources)"
+      - "@globs(tests)"
+      - vitest.config.ts # Local for each project
+    command: vitest
+    args:
+      - run
+      - --passWithNoTests
+      - --coverage
+      - .
+    preset: server # does not run on ci
+
+  typecheck:
+    command: tsc
+    args:
+      - --noEmit
+      - --pretty
+    inputs:
+      - "@globs(typescript)"
+      - "@globs(sources)"
+      - "@globs(tests)"

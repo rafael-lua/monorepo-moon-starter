@@ -1,11 +1,10 @@
 {
   "name": "@modules/hello-world",
-  "packageManager": "yarn@4.10.3",
-  "type": "module",
   "version": "0.1.0",
   "files": [
     "dist"
   ],
+  "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -13,12 +12,13 @@
     ".": "./dist/index.js",
     "./package.json": "./package.json"
   },
+  "dependencies": {
+    "@packages/hello": "workspace:^"
+  },
   "devDependencies": {
     "@types/node": "^24.9.2",
     "tsdown": "^0.15.12",
     "typescript": "^5.9.3"
   },
-  "dependencies": {
-    "@packages/hello": "workspace:^"
-  }
+  "packageManager": "yarn@4.10.3"
 }

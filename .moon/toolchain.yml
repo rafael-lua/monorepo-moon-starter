@@ -1,10 +1,11 @@
-$schema: "https://moonrepo.dev/schemas/toolchain.json"
+$schema: ./cache/schemas/toolchains.json
 
-unstable_javascript:
-  packageManager: "yarn"
+javascript:
+  packageManager: yarn
   dedupeOnLockfileChange: true
-  dependencyVersionFormat: "workspace-caret"
+  dependencyVersionFormat: workspace-caret
   syncProjectWorkspaceDependencies: true
+  syncPackageManagerField: true
 
   # Do not infer functionality from `package.json`, as we want to encourage
   # consumers to embrace moon.
@@ -16,8 +17,6 @@ typescript:
   routeOutDirToCache: true
   syncProjectReferences: true
 
-unstable_node:
-  version: "22"
-
-unstable_yarn:
-  version: "4"
+# .prototools manages the versions
+node: {}
+yarn: {}

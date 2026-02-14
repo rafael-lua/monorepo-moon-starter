@@ -1,38 +1,42 @@
 {
   "name": "moonrepo-moon-starter",
-  "packageManager": "yarn@4.10.3",
-  "type": "module",
-  "private": true,
   "version": "0.1.3",
+  "private": true,
   "license": "MIT",
   "author": "rafael-lua",
-  "scripts": {
-    "create:pkg": "mkdir -p packages/$1 && cd packages/$1 && yarn init -y",
-    "create:mdl": "mkdir -p modules/$1 && cd modules/$1 && yarn init -y",
-    "moon": "$(yarn bin moon) --color",
-    "graph": "yarn moon tg",
-    "postinstall": "yarn moon sync projects",
-    "test:ui": "vitest --coverage --ui --api.port 3005",
-    "format": "prettier --write ."
-  },
   "workspaces": [
     "packages/*",
     "modules/*"
   ],
+  "type": "module",
+  "scripts": {
+    "create:pkg": "mkdir -p packages/$1 && cd packages/$1 && yarn init -y",
+    "create:mdl": "mkdir -p modules/$1 && cd modules/$1 && yarn init -y",
+    "moon": "moon --color",
+    "graph": "yarn moon tg",
+    "postinstall": "yarn moon sync",
+    "sync": "yarn moon sync projects",
+    "test:ui": "vitest --coverage --ui --api.port 3005",
+    "format": "oxfmt .",
+    "check": "yarn moon run :lintfix :formatfix :test :typecheck --no-actions"
+  },
   "devDependencies": {
-    "@moonrepo/cli": "^1.41.6",
-    "@prettier/plugin-oxc": "^0.0.4",
     "@vitest/coverage-v8": "^4.0.6",
     "@vitest/ui": "^4.0.6",
     "changelogen": "^0.6.2",
+    "consola": "^3.4.2",
+    "destr": "^2.0.5",
+    "execa": "^9.6.1",
     "oxfmt": "^0.32.0",
     "oxlint": "^1.47.0",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "vite-plugin-oxlint": "^1.4.0",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^4.0.6"
+    "vitest": "^4.0.6",
+    "yargs": "^18.0.0"
   },
   "engines": {
     "node": ">=22"
-  }
+  },
+  "packageManager": "yarn@4.10.3"
 }
