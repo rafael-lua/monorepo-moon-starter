@@ -1,5 +1,14 @@
 Changelogs are auto generated from commits using `harmonic-major` action.
 
+## [v0.2.0](https://github.com/rafael-lua/monorepo-moon-starter/compare/v0.1.3...v0.2.0) (2026.2.14)
+
+### ✨ Features
+
+-   feat: yarn lock
+-   feat: bump moon and update project configs
+-   feat: yarn lock
+-   feat: migrate to oxfmt
+
 ## [v0.1.3](https://github.com/rafael-lua/moonrepo-moon-starter/compare/v0.1.2...v0.1.3) (2025.11.2)
 
 ### 🐛 Fixes
